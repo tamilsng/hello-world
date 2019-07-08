@@ -1,1 +1,1 @@
-Hi this is sample page by Tamil
+Hi this is sample page.
