@@ -5,8 +5,6 @@ podTemplate(
     ) {
 
     node("myJenkins") {
-
-        @Library('https://github.com/tamilsng/hello-world.git') _
         
         stage ('SCM checkout'){
             echo 'Checking out git repository'
