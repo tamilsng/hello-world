@@ -1,10 +1,22 @@
-node{
-   stage('SCM Checkout'){
-     git 'https://github.com/tamilsng/hello-world.git'
-   }
-   stage('compile-package'){
-     def mvnHome= tool name: 'maven', type: 'maven'
-     sh "${mvnHome}/bin/mvn package"
-   }
+podTemplate(
+    inheritFrom: "maven", 
+    label: "myJenkins", 
+    cloud: "openshift", 
+    ) {
 
+    node("myJenkins") {
+
+        @Library('https://github.com/tamilsng/hello-world.git') _
+        
+        stage ('SCM checkout'){
+            echo 'Checking out git repository'
+            checkout scm
+        }
+    
+        stage ('Maven build'){
+            echo 'Building project'
+            sh "mvn package"
+        }
+
+    }
 }
