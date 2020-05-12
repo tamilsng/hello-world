@@ -1,20 +1,20 @@
-podTemplate(
-    inheritFrom: "maven", 
-    label: "myJenkins", 
-    cloud: "openshift", 
-    ) {
-
-    node("myJenkins") {
-        
-        stage ('SCM checkout'){
-            echo 'Checking out git repository'
-            checkout scm
+pipeline {
+    agent any
+    stages {
+        stage('Maven Test and Package') {
+            steps {
+                sh "mvn clean install"
+            }
         }
-    
-        stage ('Maven build'){
-            echo 'Building project'
-            sh "mvn package"
+        stage('--test--') {
+            steps {
+                sh "echo hi"
+            }
         }
-
+        stage('--package--') {
+            steps {
+                sh "echo hi hi"
+            }
+        }
     }
 }
