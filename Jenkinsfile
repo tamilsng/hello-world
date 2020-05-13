@@ -11,14 +11,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''
-                oc policy add-role-to-user admin developer -n ${project}"
+                oc policy add-role-to-user admin developer -n ${project}
                 oc new-build -n ${project} --binary --name=${app} -l app=${app} || echo 'Build exists'
                 '''
             }
         }
         stage('--package--') {
             steps {
-                sh "echo hi hi"
+                sh "echo hi"
             }
         }
     }
