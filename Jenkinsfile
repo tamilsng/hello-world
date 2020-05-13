@@ -8,8 +8,9 @@ pipeline {
                 sh "mvn clean install"
             }
         }
-        stage('--test--') {
+        stage('Build Image') {
             steps {
+                sh "cp target/webapp.war target/ROOT.war"
                 sh "echo hi"
             }
         }
