@@ -10,11 +10,11 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh "cp webapp/target/webapp.war target/webapp.war"
+                sh "cp webapp/target/webapp.war ./webapp.war"
                 script {
                     openshift.withCluster() {
                         openshift.withProject(env.aub2) {
-                            openshift.selector("bc", "tasks").startBuild("--from-file=target/webapp.war", "--wait=true")
+                            openshift.selector("bc", "tasks").startBuild("--from-file=./webapp.war", "--wait=true")
                         }
                     }
                 }
