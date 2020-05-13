@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh '''#!/usr/bin/groovy
+                sh '''#!/bin/bash
                 oc policy add-role-to-user admin developer -n aub2
                 oc new-build -n aub2 --binary --name=hello-world -l app=hello-world || echo Build exists
                 '''
