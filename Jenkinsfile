@@ -14,7 +14,7 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject(env.aub2) {
-                            openshift.selector("bc", "tasks").startBuild("--from-file=./webapp.war", "--wait=true")
+                            openshift.selector("bc").startBuild("--from-file=./webapp.war", "--wait=true")
                         }
                     }
                 }
