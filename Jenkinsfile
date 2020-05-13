@@ -11,8 +11,8 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''#!/bin/bash
-                oc policy add-role-to-user admin developer -n cicd
-                oc new-build -n ${project} --binary --name=${app} -l app=${app} || echo Build exists
+                oc policy add-role-to-user admin developer -n aub2
+                oc new-build -n aub2 --binary --name=hello-world -l app=hello-world || echo Build exists
                 '''
             }
         }
