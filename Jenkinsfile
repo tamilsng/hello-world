@@ -10,15 +10,8 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh "cp webapp/target/webapp.war ./webapp.war"
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject(env.aub2) {
-                            openshift.selector("bc").startBuild("--from-file=./webapp.war", "--wait=true")
-                        }
-                    }
-                }
-                sh "echo hi"
+                sh "oc policy add-role-to-user admin developer -n ${project}"
+                sh "oc new-build -n ${project} --binary --name=${app} -l app=${app} || echo 'Build exists'"
             }
         }
         stage('--package--') {
