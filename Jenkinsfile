@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh "cp target/webapp.war target/ROOT.war"
+                sh "cp webapp/target/webapp.war target/ROOT.war"
                 sh "echo hi"
             }
         }
