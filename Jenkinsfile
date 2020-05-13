@@ -10,10 +10,10 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh '''#!/bin/bash
+                sh '''#!/usr/bin/groovy
                 oc policy add-role-to-user admin developer -n aub2
-                oc new-build -n aub2 --binary --name=hello-world -l app=hello-world || echo Build exists
-                oc start-build hello-world -n aub2 --from-dir=. --follow
+                oc new-build -n ${project} --binary --name=${app} -l app=${app} || echo 'Build exists'
+                oc start-build ${app} -n ${project} --from-dir=. --follow
                 '''
             }
         }
