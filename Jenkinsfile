@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'maven'
+    }
     stages {
         stage('Maven Test and Package') {
             steps {
