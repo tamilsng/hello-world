@@ -1,6 +1,12 @@
-libraries {
-  lib('github.com/redhat-helloworld-msa/jenkins-library@master')
-}
+library(
+  identifier: 'jenkins-shared-library@1.0.4',
+  retriever: modernSCM(
+    [
+      $class: 'GitSCMSource',
+      remote: 'github.com/redhat-helloworld-msa/jenkins-library@master'
+    ]
+  )
+)
 
 pipeline {
     agent {
