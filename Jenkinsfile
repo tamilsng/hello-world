@@ -1,5 +1,5 @@
 library(
-  identifier: 'jenkins-shared-library@1.0.4',
+  identifier: 'redhat-helloworld-msa/jenkins-library@master',
   retriever: modernSCM(
     [
       $class: 'GitSCMSource',
