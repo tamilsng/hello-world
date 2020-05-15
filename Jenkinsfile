@@ -21,12 +21,12 @@ pipeline {
         stage('Build Image') {
             steps {
                 buildApp('aub2', 'hello-world')
-                echo "This is the build number: ${env.BUILD_NUMBER}"
+                echo 'This is the build number: ${env.BUILD_NUMBER}'
             }
         }
         stage('--package--') {
             steps {
-                sh "echo hi hi"
+                sh "echo hi"
             }
         }
     }
