@@ -1,3 +1,7 @@
+libraries {
+  lib('github.com/redhat-helloworld-msa/jenkins-library@master')
+}
+
 pipeline {
     agent {
         label 'maven'
@@ -10,15 +14,13 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh '''#!/bin/bash
-                oc policy add-role-to-user admin developer -n aub2
-                oc start-build hello-world -n aub2 --from-dir=. --follow
-                '''
+                buildApp('cicd', 'hello-world')
+                echo "This is the build number: ${env.BUILD_NUMBER}"
             }
         }
         stage('--package--') {
             steps {
-                sh "echo hi"
+                sh "echo hi hi"
             }
         }
     }
