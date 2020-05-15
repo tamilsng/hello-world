@@ -3,7 +3,7 @@ library(
   retriever: modernSCM(
     [
       $class: 'GitSCMSource',
-      remote: 'github.com/redhat-helloworld-msa/jenkins-library@master'
+      remote: 'https://github.com/redhat-helloworld-msa/jenkins-library.git'
     ]
   )
 )
