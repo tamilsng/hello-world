@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                buildApp('cicd', 'hello-world')
+                buildApp('aub2', 'hello-world')
                 echo "This is the build number: ${env.BUILD_NUMBER}"
             }
         }
